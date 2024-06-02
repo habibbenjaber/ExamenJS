@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <table id="listeArticles">
+
+    </table>
+    <input type="button" value="charger les articles" onclick="recupererArticle()">
+
+    <script>
+
+
+        function afficherArticle(eleTD, article) {
+            // creer nom
+            let ele = document.createElement('p');
+            ele.innerText = article.nom;
+            eleTD.appendChild(ele);
+
+            // creer categorie
+            ele = document.createElement('p');
+            ele.innerText = article.categorie;
+            eleTD.appendChild(ele);
+
+            // creer prix
+            ele = document.createElement('p');
+            ele.innerText = article.prix;
+            eleTD.appendChild(ele);
+        }
+
+        function afficherLesArticles(articles) {
+            console.log('afficherLesArticles')
+            // creer le tableau html
+            let eleTable = document.getElementById('listeArticles');
+
+            let eleTr;
+            for (i = 0; i < articles.length; i++) {
+                // creer une novelle ligne TT
+                if (i % 3 == 0) {
+                    eleTr = document.createElement('tr');
+                    eleTable.appendChild(eleTr);
+
+                }
+
+                // creer une cellue Td
+                eleTd = document.createElement('td');
+                eleTr.appendChild(eleTd);
+                afficherArticle(eleTd, articles[i])
+            }
+
+            console.log('fin afficherLesArticles')
+
+        }
+
+        function recupererArticle() {
+
+           // envoyer la requete asynchrone pour recuperer les articles
+            xhttp.open("GET", "articles.json")
+            xhttp.send();
+        }
+
+        // Creer et initialiser l'objet XMLHttpRequest
+        const xhttp = new XMLHttpRequest();
+
+        // definir la fonction de rappel quand la reponse a la requete asynchrone sera recue
+        xhttp.onreadystatechange = function () {
+            if (this.readyState < 4 || this.status != 200) return;
+            // transformer responseText, qui est une chaine au format JSON, en un objet JSON
+            // (tableau de JSON)
+            const listArticles = JSON.parse(this.responseText);
+
+            // afficher la liste des articles
+            afficherLesArticles(listArticles)
+
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,50 @@
+[
+    {
+        "nom": "Pantalon large ",
+        "categorie": "Femme",
+        "photo": "pantalonF.png",
+        "prix": 86,
+        "tailles": [
+            "S",
+            "M",
+            "L"
+        ],
+        "couleurs": [
+            {
+                "couleur": "rouge",
+                "photo": "pantalonF-R.png"
+            },
+            {
+                "couleur": "vert",
+                "photo": "pantalonF-V.png"
+            }
+        ]
+    },
+    {
+        "nom": "chemise",
+        "photo": "chemiseH.png",
+        "categorie": "homme",
+        "prix": 54,
+        "tailles": [
+            "S",
+            "M",
+            "L",
+            "XL",
+            "XXL"
+        ],
+        "couleurs": [
+            {
+                "couleur": "Blanc",
+                "photo": "chemiseH-B.png"
+            },
+            {
+                "couleur": "Bleu",
+                "photo": "chemiseH-BL.png"
+            },
+            {
+                "couleur": "Vert",
+                "photo": "chemiseH-V.png"
+            }
+        ]
+    }
+]
